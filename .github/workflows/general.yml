@@ -9,23 +9,24 @@ on:
         - master
 
 jobs:
-  name: Test
-  runs-on: ubuntu-latest
-  steps:
-    - name: Check out repo code
-      uses: actions/checkout@v3
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo code
+        uses: actions/checkout@v3
 
-    - name:
-        Install Rust toolchain
-        # This GitHub Action installs a Rust toolchain using rustup. It is designed for one-line concise usage and good defaults.
-      uses: dtolnay/rust-toolchain@stable
+      - name:
+          Install Rust toolchain
+          # This GitHub Action installs a Rust toolchain using rustup. It is designed for one-line concise usage and good defaults.
+        uses: dtolnay/rust-toolchain@stable
 
-    # caching crates
-    - name: Rust Cache Action
-      uses: Swatinem/rust-cache@v2
+      # caching crates
+      - name: Rust Cache Action
+        uses: Swatinem/rust-cache@v2
 
-    - name: Run tests
-      run: cargo test
+      - name: Run tests
+        run: cargo test
 
   fmt:
     name: Rustfmt
